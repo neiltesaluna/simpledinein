@@ -2,14 +2,13 @@
 title: "Scrambled Eggs"
 date: 2020-07-12T13:13:12+10:00
 draft: true
-author: Author Name
+author: Neil Tesaluna
 cover: /img/scrambled-eggs.jpg
 categories: ["Breakfast"]
 tags: ["Eggs", "Pecorino romano", "Chives", "Crème fraîche"]
-draft: true
 ---
 
-Gordon Ramsay's creamy scrambled eggs
+Gordon Ramsay's creamy scrambled eggs, perfect with toast and fried vegetables
 
 <!--more-->
 
