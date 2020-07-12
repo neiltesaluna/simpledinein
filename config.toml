@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "//cookingsimple.netlify.app/"
 languageCode = "en-us"
 title = "Cooking Simple"
 theme = "dream"
