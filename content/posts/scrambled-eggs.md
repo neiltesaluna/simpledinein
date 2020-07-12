@@ -27,12 +27,21 @@ ingredients:
 
 directions:
 - In a bowl, combine the 3 eggs
+
 - Add 1/4 cup of finely chopped chives into the bowl and mix
+
 - At low-medium heat, add 2 tablespoon of unsalted butter into the saucepan (move this around the saucepan until foaming)
+
 - Add the egg mixture into the saucepan
+
 - Whilst moving the saucepan back and forth, mix the contents vigorously (this reduces the size of the curds)
+
 - Once the egg mixture starts to come together, turn off the heat
+
 - Add 1 tablespoon of crème fraîche and incoroporate it into the mixture
+
 - Salt and pepper to taste
+
 - Serve onto your breakfast plate
+
 - Grate the cheese above the plate, in this case we are using Pecorino Romano (a bit salty)
