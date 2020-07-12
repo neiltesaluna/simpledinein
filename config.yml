@@ -1,0 +1,24 @@
+baseURL: //cookingsimple.netlify.app
+languageCode: en-us
+title: cookingsimple
+theme: dream
+googleAnalytics:
+defaultcontentlanguage: en
+paginate: 20
+canonifyurls: true
+pygmentsstyle: monokai
+pygmentscodefences: true
+pygmentscodefencesguesssyntax: true
+pygmentsOptions: "linenos=table"
+permalinks:
+  posts: /posts/:year/:month/:title
+params:
+  author: Neil Tesaluna
+  description: Just some recipes used for day to day cooking
+  keywords: 'recipes'
+  favicon_32:
+  favicon_16:
+  footercontent:
+  hidecredits: false
+  hidecopyright: false
+  showNavTitle: true            # Boolean: show site title in nav bar
