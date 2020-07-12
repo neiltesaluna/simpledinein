@@ -12,11 +12,11 @@ Gordon Ramsay's creamy scrambled eggs. Perfect with mushrooms and spinach, on to
 
 <!--more-->
 
-- Serves: 2 people
-- Preparation Time: 5 minutes
-- Cooking Time: 5 minutes
+- **Serves:** 2 people
+- **Preparation Time:** 5 minutes
+- **Cooking Time:** 5 minutes
 
-ingredients:
+**Ingredients:**
 - 3 eggs
 - 2 tablespoon unsalted butter
 - 1/2 cup cheese (Pecorino Romano), grated
@@ -25,7 +25,7 @@ ingredients:
 - Kosher salt
 - Ground black pepper
 
-directions:
+**Directions:**
 - In a bowl, combine the 3 eggs
 
 - Add 1/4 cup of finely chopped chives into the bowl and mix
