@@ -1,0 +1,23 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "Cooking Simple"
+theme = "dream"
+
+[params]
+  # background = "black"
+  backgroundImage = "/me/background.jpg"
+  linkColor = "seagreen"
+
+  author = "Neil Tesaluna"
+
+  siteStartYear = 2020
+
+  favicon = "/favicon.ico"
+
+  # options
+  showSummaryCoverInPost = true
+
+  # dark mode
+  darkLinkColor = "darkseagreen"
+  darkNav = true
+  dark404 = true
