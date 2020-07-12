@@ -9,7 +9,7 @@ tags: ["Eggs", "Pecorino romano", "Chives", "Crème fraîche"]
 draft: true
 ---
 
-Cut out summary from your post content here.
+Gordon Ramsay's creamy scrambled eggs
 
 <!--more-->
 
