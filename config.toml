@@ -5,6 +5,6 @@ theme = "dream"
 
 [params]
   background = "white"
-  title = "Cooking Simple"
+  title = "cookingsimple."
   author = "Neil Tesaluna"
   showSummaryCoverInPost = true
