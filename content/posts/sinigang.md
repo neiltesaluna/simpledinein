@@ -37,7 +37,6 @@ In this method we will be using an **electric pressure cooker**.
 
 - 44 g Tamarind soup base powder (we are using [**Knorr Sinigang sa Sampalok Original**](https://www.knorr.com/ph/knorr-products/knorr-sinigang-mix/knorr-sinigang-sa-sampalok-original.html))
 
-
 **Directions:**
 - Give the pork ribs a good rinse with water, then add it into the pressure cooker
 

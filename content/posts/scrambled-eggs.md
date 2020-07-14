@@ -31,7 +31,6 @@ Gordon Ramsay's creamy scrambled eggs. Perfect with mushrooms and spinach, on to
 
 - Ground black pepper
 
-
 **Directions:**
 - In a bowl, combine the 3 eggs
 
