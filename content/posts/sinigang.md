@@ -19,9 +19,9 @@ In this method we will be using an **electric pressure cooker**.
 **Cooking Time:** 60 minutes  
 
 ### **Ingredients:**
-- 1 kg of pork ribs (can use pork bones and/or pork belly as a substitute)
+- 1 kg pork ribs (can use pork bones and/or pork belly as a substitute)
 
-- 1 bunch of water spinach, cut in half (can use spinach or bok choy as a substitute)
+- 1 bunch water spinach, cut in half (can use spinach or bok choy as a substitute)
 
 - 1 large yellow onion, julienne cuts
 
@@ -31,9 +31,9 @@ In this method we will be using an **electric pressure cooker**.
 
 - 1 green cayenne pepper, cut into halves (can add a hotter pepper as a substitute)
 
-- 3 tablespoon fish sauce
+- 3 tablespoons fish sauce
 
-- 2 teaspoon ground black pepper
+- 2 teaspoons ground black pepper
 
 - 44 g Tamarind soup base powder (we are using [**Knorr Sinigang sa Sampalok Original**](https://www.knorr.com/ph/knorr-products/knorr-sinigang-mix/knorr-sinigang-sa-sampalok-original.html))
 
