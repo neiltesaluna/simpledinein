@@ -16,7 +16,7 @@ Gordon Ramsay's creamy scrambled eggs. Perfect with mushrooms and spinach, on to
 **Preparation Time:** 5 minutes  
 **Cooking Time:** 5 minutes  
 
-**Ingredients:**
+### **Ingredients:**
 - 3 eggs
 
 - 2 tablespoon unsalted butter
@@ -31,7 +31,7 @@ Gordon Ramsay's creamy scrambled eggs. Perfect with mushrooms and spinach, on to
 
 - Ground black pepper
 
-**Directions:**
+### **Directions:**
 - In a bowl, combine the 3 eggs
 
 - Add 1/4 cup of finely chopped chives into the bowl and mix
