@@ -8,7 +8,9 @@ categories: ["Soup"]
 tags: ["Pork", "Tamarind", "Radish", "Water Spinach", "Pressure Cooker"]
 ---
 
-This is the **quick version** of the filipino hot and sour soup. With a tamarind and pork broth base, this is a delicious combination to cure a running nose during the colder months. In this method we will be using an **electric pressure cooker**.
+Filipino hot and sour soup, with a tamarind and pork broth base. This is a delicious combination to cure a running nose during the colder months.
+
+In this method we will be using an **electric pressure cooker**.
 
 <!--more-->
 
