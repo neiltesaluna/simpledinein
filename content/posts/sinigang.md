@@ -1,14 +1,14 @@
 ---
 title: "Sinigang"
 date: 2020-07-13T17:54:13+10:00
-draft: true
-author: Neil Tesaluna
+draft: false
+author: Leoren
 cover: /img/sinigang.jpg
 categories: ["Soups"]
 tags: ["Pork", "Tamarind", "Radish", "Water Spinach", "Pressure Cooker"]
 ---
 
-This is the **quick version** of the filipino hot and sour soup. With a tamarind and pork broth base, this is a delicious combination to cure a running nose during the colder months. In this method we will be using an **electric pressure cooker**, making it easier for the pork to fall off the bone.
+This is the **quick version** of the filipino hot and sour soup. With a tamarind and pork broth base, this is a delicious combination to cure a running nose during the colder months. In this method we will be using an **electric pressure cooker**.
 
 <!--more-->
 

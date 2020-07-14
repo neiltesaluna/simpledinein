@@ -2,7 +2,7 @@
 title: "Scrambled Eggs"
 date: 2020-07-12T13:13:12+10:00
 draft: false
-author: Neil Tesaluna
+author: Neil
 cover: /img/scrambled-eggs.jpg
 categories: ["Breakfast"]
 tags: ["Eggs", "Pecorino romano", "Chives", "Crème fraîche"]
