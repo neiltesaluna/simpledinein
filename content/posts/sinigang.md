@@ -4,7 +4,7 @@ date: 2020-07-13T17:54:13+10:00
 draft: false
 author: Leoren
 cover: /img/sinigang.jpg
-categories: ["Soups"]
+categories: ["Soup"]
 tags: ["Pork", "Tamarind", "Radish", "Water Spinach", "Pressure Cooker"]
 ---
 
