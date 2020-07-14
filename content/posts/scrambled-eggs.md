@@ -12,9 +12,9 @@ Gordon Ramsay's creamy scrambled eggs. Perfect with mushrooms and spinach, on to
 
 <!--more-->
 
-- **Serves:** 2 people
-- **Preparation Time:** 5 minutes
-- **Cooking Time:** 5 minutes
+**Serves:** 2 people  
+**Preparation Time:** 5 minutes  
+**Cooking Time:** 5 minutes  
 
 **Ingredients:**
 - 3 eggs
