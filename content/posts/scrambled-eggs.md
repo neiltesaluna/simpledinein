@@ -18,12 +18,19 @@ Gordon Ramsay's creamy scrambled eggs. Perfect with mushrooms and spinach, on to
 
 **Ingredients:**
 - 3 eggs
+
 - 2 tablespoon unsalted butter
+
 - 1/2 cup cheese (Pecorino Romano), grated
+
 - 1/4 cup chives, finely chopped
+
 - 1 tablespoon crème fraîche
+
 - Kosher salt
+
 - Ground black pepper
+
 
 **Directions:**
 - In a bowl, combine the 3 eggs
