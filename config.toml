@@ -1,11 +1,11 @@
-baseURL = "//cookingsimple.netlify.app/"
+baseURL = "//simpledinein.netlify.app/"
 languageCode = "en-us"
-title = "Cooking Simple"
+title = "simpledine.in"
 theme = "dream"
 
 [params]
   backgroundImage = "/img/site-bg.jpg"
-  title = "cookingsimple."
+  title = "simpledine.in"
   author = "Neil Tesaluna"
   avatar = "/img/avatar.jpg"
   favicon = "/img/avatar.jpg"
