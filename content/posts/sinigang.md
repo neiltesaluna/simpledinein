@@ -1,11 +1,11 @@
 ---
 title: "Sinigang"
 date: 2020-07-13T17:54:13+10:00
-draft: false
 author: Leoren
 cover: /img/sinigang.jpg
-categories: ["Soup"]
+categories: ["Soup", "Lunch", "Dinner"]
 tags: ["Pork", "Tamarind", "Radish", "Water Spinach", "Pressure Cooker"]
+draft: false
 ---
 
 Filipino hot and sour soup, with a tamarind and pork broth base. This is a delicious combination to cure a running nose during the colder months.
