@@ -4,7 +4,7 @@ title = "simpledine.in"
 theme = "dream"
 
 [params]
-  backgroundImage = "/img/site-bg.jpg"
+  background = "#284b63"
   title = "simpledine.in"
   author = "Neil Tesaluna"
   avatar = "/img/avatar.jpg"
