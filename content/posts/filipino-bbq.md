@@ -14,7 +14,7 @@ Ideally cooking the meat over a **Charcaol BBQ** brings out the best flavour for
 
 <!--more-->
 
-**Serves:** 1kg of Meat (usually this is best with pork)
+**Serves:** 1kg of Meat (usually this is best with pork)  
 **Preparation Time:** 12 hours  
 **Cooking Time:** 20 minutes  
 
