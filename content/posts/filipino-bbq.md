@@ -1,5 +1,5 @@
 ---
-title: Filipino BBQ Marinade
+title: "Filipino BBQ"
 date: 2020-07-31T16:43:10+10:00
 author: Leoren
 cover: /img/filipino-bbq.jpg
