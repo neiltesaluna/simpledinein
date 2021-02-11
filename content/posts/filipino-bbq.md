@@ -4,11 +4,12 @@ date: 2020-07-31T16:43:10+10:00
 author: Leoren
 cover: /img/filipino-bbq.jpg
 categories: ["Lunch", "Dinner"]
-tags: ["Sprite, "Lemon", "Soy Sauce", "Banana Ketchup", "BBQ"]
+tags: ["Sprite", "Lemon", "Soy sauce", "Banana ketchup", "BBQ"]
 draft: false
 ---
 
 This Filipino style BBQ involves these important ingredients: Sprite, Calamansi and Banana Ketchup.
+
 Ideally cooking the meat over a **Charcaol BBQ** brings out the best flavour for this recipe.
 
 <!--more-->
