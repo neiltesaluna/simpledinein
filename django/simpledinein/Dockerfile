@@ -1,2 +1,2 @@
 FROM python:latest
-RUN pip install django
+RUN pip install --no-cache-dir -r requirements.txt
