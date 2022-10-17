@@ -4,9 +4,11 @@
 {% block content %}
 <section markdown="block">
   {% for recipe in recipes %}
-    <h1><a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.title }}</a></h1>
-    {{ recipe.content | markdown | safe }}
-    <br>
+    <div class="border border-dark">
+      <h1><a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.title }}</a></h1>
+      {{ recipe.content | markdown | safe }}
+      <br>
+    </div>
   {% endfor %}
 </section>
 {% endblock content %}
