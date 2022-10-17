@@ -3,7 +3,11 @@
 
 {% block content %}
 <section markdown="block">
-<h1>{{ object.title }}</h1>
-{{ object.content | markdown | safe }}
+  <div class="recipe-item m-4">
+    <h1>{{ object.title }}</h1>
+    {{ object.summary | markdown | safe }}
+    <br>
+    {{ object.content | markdown | safe }}
+  </div>
 </section>
 {% endblock content %}

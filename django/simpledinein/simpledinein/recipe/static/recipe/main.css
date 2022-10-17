@@ -1,3 +1,30 @@
 body {
   background-color: lightsteelblue;
 }
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.recipe-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.recipe-list-item {
+  padding: .5em;
+  background-color: blanchedalmond;
+  border-color: dimgray;
+  border: 1px solid;
+  max-width: 350px;
+}
+
+.recipe-item {
+  padding: .5em;
+  background-color: blanchedalmond;
+  border-color: dimgray;
+  border: 1px solid;
+}

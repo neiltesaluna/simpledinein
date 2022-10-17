@@ -2,11 +2,11 @@
 {% load markdown %}
 
 {% block content %}
-<section markdown="block">
+<section markdown="block" class="recipe-list">
   {% for recipe in recipes %}
-    <div class="border border-dark">
+    <div class="recipe-list-item container-fluid p-4 m-2">
       <h1><a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.title }}</a></h1>
-      {{ recipe.content | markdown | safe }}
+      {{ recipe.summary | markdown | safe }}
       <br>
     </div>
   {% endfor %}
