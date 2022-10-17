@@ -1,0 +1,9 @@
+{% extends "recipe/base.html" %}
+{% load markdown %}
+
+{% block content %}
+<section markdown="block">
+<h1>{{ object.title }}</h1>
+{{ object.content | markdown | safe }}
+</section>
+{% endblock content %}

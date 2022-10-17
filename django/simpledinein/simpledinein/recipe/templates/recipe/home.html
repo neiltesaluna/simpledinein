@@ -1,18 +1,12 @@
+{% extends "recipe/base.html" %}
 {% load markdown %}
-<html lang="en">
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recipes</title>
-</head>
-<body>
 
+{% block content %}
 <section markdown="block">
-{% for recipe in recipes %}
-  <h1>{{ recipe.title }}</h1>
-  {{ recipe.content | markdown | safe }}
-  <br>
-{% endfor %}
+  {% for recipe in recipes %}
+    <h1><a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.title }}</a></h1>
+    {{ recipe.content | markdown | safe }}
+    <br>
+  {% endfor %}
 </section>
-
-</body>
-</html>
+{% endblock content %}
