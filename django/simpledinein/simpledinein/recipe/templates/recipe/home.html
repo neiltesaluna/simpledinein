@@ -10,6 +10,7 @@
 {% for recipe in recipes %}
   <h1>{{ recipe.title }}</h1>
   {{ recipe.content | markdown | safe }}
+  <br>
 {% endfor %}
 </section>
 
