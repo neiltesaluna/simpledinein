@@ -10,6 +10,10 @@ services:
     working_dir: /app
     # command: tail -f /bin/bash
     command: >
-      bash -c "python manage.py makemigrations
-      && python manage.py loaddata simpledinein/recipes.json
+      bash -c "python simpledinein/manage.py makemigrations
+      && python simpledinein/manage.py migrate
+      && python simpledinein/manage.py loaddata simpledinein/recipes.json
       && python simpledinein/manage.py runserver 0.0.0.0:8000"
+
+      
+      
