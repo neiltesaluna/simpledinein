@@ -1,0 +1,29 @@
+[
+{
+ "model": "recipe.recipe",
+ "pk": 1,
+ "fields": {
+  "title": "Filipino BBQ",
+  "summary": "**Serves:** 1kg of Meat (usually this is best with pork)  \r\n**Preparation Time:** 12 hours  \r\n**Cooking Time:** 20 minutes  \r\n\r\nThis Filipino style BBQ involves these important ingredients: Sprite, Calamansi and Banana Ketchup.\r\n\r\nIdeally cooking the meat over a **Charcaol BBQ** brings out the best flavour for this recipe.",
+  "content": "### **Ingredients:**\r\n- 1 cup Soy Sauce\r\n\r\n- 1/2 cup Calamansi Juice (Alternatively you can use Lemon Juice)\r\n\r\n- 1/4 cup Sprite\r\n\r\n- 2 Tbsp Garlic\r\n\r\n- 1 tsp Pepper\r\n\r\n- 4 tbsp Brown Sugar\r\n\r\n- 2/3 cup Banana Ketchup (we are using [**UFC Banana Catsup**](https://www.myasiangrocer.com.au/ufc-banana-catsup-550g/))\r\n\r\n### **Directions:**\r\n- Marinade your desired meat with all the ingredients in a large bowl, make sure to use your hands to ensure even coverage\r\n\r\n- Cover the bowl with cling wrap and leave it in the refrigerator overnight\r\n\r\n- Cook the meat over a hot charcoal BBQ ensuring even charring\r\n\r\n- Let the meat rest for 5 minutes before eating"
+ }
+},
+{
+ "model": "recipe.recipe",
+ "pk": 2,
+ "fields": {
+  "title": "Sinigang",
+  "summary": "**Serves:** 6 people  \r\n**Preparation Time:** 10 minutes  \r\n**Cooking Time:** 60 minutes\r\n\r\nFilipino hot and sour soup, with a tamarind and pork broth base. This is a delicious combination to cure a running nose during the colder months.\r\n\r\nIn this method we will be using an **electric pressure cooker**.",
+  "content": "### **Ingredients:**\r\n- 1 kg pork ribs (can use pork bones and/or pork belly as a substitute)\r\n\r\n- 1 bunch water spinach, cut in half (can use spinach or bok choy as a substitute)\r\n\r\n- 1 large yellow onion, julienne cuts\r\n\r\n- 1 tomato, don't cut this but give is a good rinse\r\n\r\n- 1 small white radish, peeled and 10 mm paysanne cuts\r\n\r\n- 1 green cayenne pepper, cut into halves (can add a hotter pepper as a substitute)\r\n\r\n- 3 tablespoons fish sauce\r\n\r\n- 2 teaspoons ground black pepper\r\n\r\n- 44 g Tamarind soup base powder (we are using [**Knorr Sinigang sa Sampalok Original**](https://www.knorr.com/ph/knorr-products/knorr-sinigang-mix/knorr-sinigang-sa-sampalok-original.html))\r\n\r\n### **Directions:**\r\n- Give the pork ribs a good rinse with water, then add it into the pressure cooker\r\n\r\n- Evenly coat the pork with the Tamarind soup base powder\r\n\r\n- Add the 2 teaspoon of ground black pepper\r\n\r\n- Evenly distribute the julienne cut onions\r\n\r\n- Place 1 whole tomato in the centre of the pressure cooker\r\n\r\n- Place the 2 halves of the green cayenne pepper into the pressure cooker\r\n\r\n- Add the paysanne cut radish to cover the other ingredients\r\n\r\n- Place the water spinach evenly above the radish\r\n\r\n- Slowly pour 2 litres of water into the pressure cooker, making sure this doesn't agitate the ingredients\r\n\r\n- Add 3 tablespoon of fish sauce into the mixture\r\n\r\n- Now we can close the lid of the pressure cooker and set to cook for 25 minutes\r\n\r\n- Once the pressure cooker is finished, carefully relieve the pressure using the vent\r\n\r\n- Once vented, break the tomato by pushing it down with a ladle and give the soup a good mix\r\n\r\n- Serve into single small bowls or a nice big one for the family to share"
+ }
+},
+{
+ "model": "recipe.recipe",
+ "pk": 3,
+ "fields": {
+  "title": "Scrambled Eggs",
+  "summary": "**Serves:** 2 people  \r\n**Preparation Time:** 5 minutes  \r\n**Cooking Time:** 5 minutes\r\n\r\nGordon Ramsay's creamy scrambled eggs. Perfect with mushrooms and spinach, on top of your favourite piece of toast.",
+  "content": "### **Ingredients:**\r\n- 3 eggs\r\n\r\n- 2 tablespoon unsalted butter\r\n\r\n- 1/2 cup cheese (Pecorino Romano), grated\r\n\r\n- 1/4 cup chives, finely chopped\r\n\r\n- 1 tablespoon crème fraîche\r\n\r\n- Kosher salt\r\n\r\n- Ground black pepper\r\n\r\n### **Directions:**\r\n- In a bowl, combine the 3 eggs\r\n\r\n- Add 1/4 cup of finely chopped chives into the bowl and mix\r\n\r\n- At low-medium heat, add 2 tablespoon of unsalted butter into the saucepan (move this around the saucepan until foaming)\r\n\r\n- Add the egg mixture into the saucepan\r\n\r\n- Whilst moving the saucepan back and forth, mix the contents vigorously (this reduces the size of the curds)\r\n\r\n- Once the egg mixture starts to come together, turn off the heat\r\n\r\n- Add 1 tablespoon of crème fraîche and incoroporate it into the mixture\r\n\r\n- Salt and pepper to taste\r\n\r\n- Serve onto your breakfast plate\r\n\r\n- Grate the cheese above the plate, in this case we are using Pecorino Romano (a bit salty)"
+ }
+}
+]
