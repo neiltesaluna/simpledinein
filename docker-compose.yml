@@ -2,18 +2,9 @@
 
 services:
   app:
-    build: ./
+    build: .
     ports:
     - 8000:8000
-    volumes:
-    - ./:/app
-    working_dir: /app
-    # command: tail -f /bin/bash
-    command: >
-      bash -c "python simpledinein/manage.py makemigrations
-      && python simpledinein/manage.py migrate
-      && python simpledinein/manage.py loaddata simpledinein/recipes.json
-      && python simpledinein/manage.py runserver 0.0.0.0:8000"
+    command: python manage.py runserver 0.0.0.0:8000
 
-      
       
