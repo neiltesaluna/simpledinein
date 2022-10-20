@@ -45,7 +45,7 @@
       "memoryReservation": 128,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "283243887691.dkr.ecr.ap-southeast-2.amazonaws.com/simpledinein:6acebb6ec4f28f1e2d73043066da9e40a8a64ea1",
+      "image": "283243887691.dkr.ecr.ap-southeast-2.amazonaws.com/simpledinein:latest",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -72,7 +72,7 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:ap-southeast-2:283243887691:task-definition/simpledinein-definitions:2",
+  "taskDefinitionArn": "arn:aws:ecs:ap-southeast-2:283243887691:task-definition/simpledinein-definitions:3",
   "family": "simpledinein-definitions",
   "requiresAttributes": [
     {
@@ -140,7 +140,7 @@
     "cpuArchitecture": null
   },
   "cpu": "256",
-  "revision": 2,
+  "revision": 3,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
