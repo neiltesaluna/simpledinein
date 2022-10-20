@@ -1,148 +1,86 @@
 {
-  "ipcMode": null,
-  "executionRoleArn": "arn:aws:iam::283243887691:role/ecsTaskExecutionRole",
-  "containerDefinitions": [
-    {
-      "dnsSearchDomains": null,
-      "environmentFiles": null,
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "secretOptions": null,
-        "options": {
-          "awslogs-group": "/ecs/simpledinein-definitions",
-          "awslogs-region": "ap-southeast-2",
-          "awslogs-stream-prefix": "ecs"
-        }
-      },
-      "entryPoint": [
-        "sh",
-        "-c"
-      ],
-      "portMappings": [
+    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-2:283243887691:task-definition/simpledinein-definitions:5",
+    "containerDefinitions": [
         {
-          "hostPort": 8000,
-          "protocol": "tcp",
-          "containerPort": 8000
+            "name": "simpledinein-app",
+            "image": "283243887691.dkr.ecr.ap-southeast-2.amazonaws.com/simpledinein:latest",
+            "cpu": 0,
+            "memoryReservation": 128,
+            "portMappings": [
+                {
+                    "containerPort": 8000,
+                    "hostPort": 8000,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "entryPoint": [
+                "sh",
+                "-c"
+            ],
+            "command": [
+                "python",
+                "manage.py",
+                "runserver",
+                "0.0.0.0:8000"
+            ],
+            "environment": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/simpledinein-definitions",
+                    "awslogs-region": "ap-southeast-2",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            }
         }
-      ],
-      "command": [
-        "python",
-        "manage.py",
-        "runserver",
-        "0.0.0.0:8000"
-      ],
-      "linuxParameters": null,
-      "cpu": 0,
-      "environment": [],
-      "resourceRequirements": null,
-      "ulimits": null,
-      "dnsServers": null,
-      "mountPoints": [],
-      "workingDirectory": null,
-      "secrets": null,
-      "dockerSecurityOptions": null,
-      "memory": null,
-      "memoryReservation": 128,
-      "volumesFrom": [],
-      "stopTimeout": null,
-      "image": "283243887691.dkr.ecr.ap-southeast-2.amazonaws.com/simpledinein:latest",
-      "startTimeout": null,
-      "firelensConfiguration": null,
-      "dependsOn": null,
-      "disableNetworking": null,
-      "interactive": null,
-      "healthCheck": null,
-      "essential": true,
-      "links": null,
-      "hostname": null,
-      "extraHosts": null,
-      "pseudoTerminal": null,
-      "user": null,
-      "readonlyRootFilesystem": null,
-      "dockerLabels": null,
-      "systemControls": null,
-      "privileged": null,
-      "name": "simpledinein-app"
-    }
-  ],
-  "placementConstraints": [],
-  "memory": "512",
-  "taskRoleArn": "arn:aws:iam::283243887691:role/ecsTaskExecutionRole",
-  "compatibilities": [
-    "EC2",
-    "FARGATE"
-  ],
-  "taskDefinitionArn": "arn:aws:ecs:ap-southeast-2:283243887691:task-definition/simpledinein-definitions:3",
-  "family": "simpledinein-definitions",
-  "requiresAttributes": [
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
-    },
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "ecs.capability.execution-role-awslogs"
-    },
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "com.amazonaws.ecs.capability.ecr-auth"
-    },
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
-    },
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
-    },
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "com.amazonaws.ecs.capability.task-iam-role"
-    },
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "ecs.capability.execution-role-ecr-pull"
-    },
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
-    },
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "ecs.capability.task-eni"
-    }
-  ],
-  "pidMode": null,
-  "requiresCompatibilities": [
-    "FARGATE"
-  ],
-  "networkMode": "awsvpc",
-  "runtimePlatform": {
-    "operatingSystemFamily": "LINUX",
-    "cpuArchitecture": null
-  },
-  "cpu": "256",
-  "revision": 3,
-  "status": "ACTIVE",
-  "inferenceAccelerators": null,
-  "proxyConfiguration": null,
-  "volumes": []
+    ],
+    "family": "simpledinein-definitions",
+    "taskRoleArn": "arn:aws:iam::283243887691:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::283243887691:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "revision": 5,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "256",
+    "memory": "512"
 }
