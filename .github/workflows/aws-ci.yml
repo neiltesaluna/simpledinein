@@ -34,8 +34,7 @@ env:
   AWS_REGION: ap-southeast-2                   # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: simpledinein           # set this to your Amazon ECR repository name
   ECS_CLUSTER: simpledinein-cluster                 # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: simpledinein-definitions # set this to the path to your Amazon ECS task definition
-                                               # file, e.g. .aws/task-definition.json
+  ECS_TASK_DEFINITION: .github/workflows/simpledinein-definitions.json
   CONTAINER_NAME: simpledinein-app           # set this to the name of the container in the
                                                # containerDefinitions section of your task definition
   
@@ -74,9 +73,9 @@ jobs:
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        docker build --build-arg DJANGO_SUPERUSER_USERNAME=${{ secrets.DJANGO_SUPERUSER_USERNAME }} --build-arg DJANGO_SUPERUSER_EMAIL=${{ secrets.DJANGO_SUPERUSER_EMAIL }} --build-arg DJANGO_SUPERUSER_PASSWORD=${{ secrets.DJANGO_SUPERUSER_PASSWORD }} -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+        docker build --build-arg DJANGO_SUPERUSER_USERNAME=${{ secrets.DJANGO_SUPERUSER_USERNAME }} --build-arg DJANGO_SUPERUSER_EMAIL=${{ secrets.DJANGO_SUPERUSER_EMAIL }} --build-arg DJANGO_SUPERUSER_PASSWORD=${{ secrets.DJANGO_SUPERUSER_PASSWORD }} -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:latest"
         
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
