@@ -33,6 +33,7 @@ on:
 env:
   AWS_REGION: ap-southeast-2                   # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: simpledinein           # set this to your Amazon ECR repository name
+  ECS_SERVICE: simpledinein-service
   ECS_CLUSTER: simpledinein-cluster                 # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: .github/workflows/simpledinein-definitions.json
   CONTAINER_NAME: simpledinein-app           # set this to the name of the container in the
@@ -89,6 +90,7 @@ jobs:
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
+        service: ${{ env.ECS_SERVICE }}
         cluster: ${{ env.ECS_CLUSTER }}
         wait-for-service-stability: true
 
