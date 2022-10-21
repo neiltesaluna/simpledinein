@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-2:283243887691:task-definition/simpledinein-definitions:5",
+    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-2:283243887691:task-definition/simpledinein:6",
     "containerDefinitions": [
         {
             "name": "simpledinein-app",
@@ -14,34 +14,24 @@
                 }
             ],
             "essential": true,
-            "entryPoint": [
-                "sh",
-                "-c"
-            ],
-            "command": [
-                "python",
-                "manage.py",
-                "runserver",
-                "0.0.0.0:8000"
-            ],
             "environment": [],
             "mountPoints": [],
             "volumesFrom": [],
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/simpledinein-definitions",
+                    "awslogs-group": "/ecs/simpledinein",
                     "awslogs-region": "ap-southeast-2",
                     "awslogs-stream-prefix": "ecs"
                 }
             }
         }
     ],
-    "family": "simpledinein-definitions",
+    "family": "simpledinein",
     "taskRoleArn": "arn:aws:iam::283243887691:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::283243887691:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 5,
+    "revision": 6,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
