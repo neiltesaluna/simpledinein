@@ -47,7 +47,6 @@ jobs:
 
   deploy:
     name: Deploy
-    needs: download
     runs-on: ubuntu-latest
 
     steps:
