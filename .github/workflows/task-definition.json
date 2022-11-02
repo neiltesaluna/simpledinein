@@ -25,7 +25,7 @@
             }
         }
     ],
-    "family": "simpledinein",
+    "family": "taskdefinition-simpledinein",
     "taskRoleArn": "arn:aws:iam::283243887691:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::283243887691:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
