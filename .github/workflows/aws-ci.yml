@@ -45,24 +45,8 @@ permissions:
 
 jobs:
 
-  download:
-    name: Download existing ECS task definition
-    runs-on: ubuntu-latest
-    
-    steps:
-    - shell: bash
-      run: |
-          aws ecs describe-task-definition --task-definition simpledinein --query taskDefinition > task-definition.json
-
-    - name: Upload task definition artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: taskdefinition
-        path: task-definition.json
-
-  deploy:
-    name: Deploy
-    needs: download
+  configure:
+    name: Configuring aws credentials
     runs-on: ubuntu-latest
 
     steps:
@@ -76,10 +60,34 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
 
+
+  download:
+    name: Download existing ECS task definition
+    needs: configure
+    runs-on: ubuntu-latest
+    
+    steps:
+    - shell: bash
+      run: |
+          aws ecs describe-task-definition --task-definition simpledinein --query taskDefinition > task-definition.json
+
+    - name: Upload task definition artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: taskdefinition
+        path: task-definition.json
+
+
+  deploy:
+    name: Deploy
+    needs: download
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
-
+      
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
       env:
