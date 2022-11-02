@@ -35,10 +35,6 @@ env:
   ECR_REPOSITORY: simpledinein           # set this to your Amazon ECR repository name
   ECS_SERVICE: simpledinein-service                 # set this to your Amazon ECS service name
   ECS_CLUSTER: simpledinein-cluster                 # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: .github/workflows/simpledinein.json # set this to the path to your Amazon ECS task definition
-                                               # file, e.g. .aws/task-definition.json
-  CONTAINER_NAME: simpledinein-app           # set this to the name of the container in the
-                                               # containerDefinitions section of your task definition
 
 permissions:
   contents: read
@@ -80,9 +76,7 @@ jobs:
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
       run: |
-        aws ecs describe-task-definition \
-          --task-definition simpledinein \
-          --query taskDefinition > task-definition.json
+        aws ecs describe-task-definition --task-definition simpledinein --query taskDefinition > task-definition.json
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
