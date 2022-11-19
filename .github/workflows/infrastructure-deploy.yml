@@ -43,7 +43,7 @@ jobs:
         ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
       run: |
         export IMAGE_TAG=$(aws ecr describe-images --repository-name simpledinein \
-        --query 'sort_by(imageDetails,& imagePushedAt)[-1].imageTags[0]') | tr -d '"'
+        --query 'sort_by(imageDetails,& imagePushedAt)[-1].imageTags[0]' | tr -d '"')
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
     
     - name: Deploy to AWS CloudFormation
