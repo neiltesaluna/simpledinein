@@ -20,6 +20,11 @@ Parameters:
     Type: AWS::EC2::Subnet::Id
     Default: subnet-0e80b983f84febe4f
 
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+    Description: VPC Id for the stack
+    Default: vpc-000387cf04ba71caf
+
 Resources:
   EcsCluster:
     Type: AWS::ECS::Cluster
@@ -104,7 +109,7 @@ Resources:
     Properties:
       HealthCheckEnabled: true
       Name: !Sub ${AWS::StackName}-lb-tg
-      VpcId: !GetAtt SubnetId1.VpcId
+      VpcId: !Ref VpcId
       TargetGroupAttributes:
         - Key: deregistration_delay.timeout_seconds
           Value: 30
@@ -124,7 +129,7 @@ Resources:
     Properties:
       GroupName: !Sub ${AWS::StackName}-container-sg
       GroupDescription: !Sub "Security group for ${AWS::StackName} ecs container cloudformation stack"
-      VpcId: !GetAtt SubnetId1.VpcId
+      VpcId: !Ref VpcId
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 8000
@@ -136,7 +141,7 @@ Resources:
     Properties:
       GroupName: !Sub ${AWS::StackName}-loadbalancer-sg
       GroupDescription: !Sub "Security group for ${AWS::StackName} load balancer cloudformation stack"
-      VpcId: !GetAtt SubnetId1.VpcId
+      VpcId: !Ref VpcId
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 80
