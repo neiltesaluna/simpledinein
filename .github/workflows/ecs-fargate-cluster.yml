@@ -1,0 +1,173 @@
+# note that infrastructure are named specifically to match app-deploy.yml environment variables
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "This stack generates the resources for an ECS fargate stack with a Network Load Balancer on a public network."
+Parameters:
+  ImageTag:
+    Description: Image tag required for the Fargate container, example 'latest'
+    Type: String
+
+  AppEnvSecret:
+    Description: Secret key for the application
+    Type: String
+
+  SubnetId1:
+    Description: Subnet 1 Id for the EcsService and Loadbalancer resource, we can either reference an existing aws subnet
+    Type: AWS::EC2::Subnet::Id
+    Default: subnet-0d8b7c79c168639a9
+
+  SubnetId2:
+    Description: Subnet 2 Id for the Loadbalancer resource, for application load balancers, we need two subnets
+    Type: AWS::EC2::Subnet::Id
+    Default: subnet-0e80b983f84febe4f
+
+Resources:
+  EcsCluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: simpledinein-cluster
+      CapacityProviders:
+        - FARGATE
+  
+  EcsService: 
+    Type: AWS::ECS::Service
+    DependsOn: ElbListener
+    Properties: 
+      ServiceName: simpledinein-service
+      Cluster: 
+        !Ref EcsCluster
+      DesiredCount: 1
+      LaunchType: FARGATE
+      LoadBalancers:
+        - ContainerName: !Sub ${AWS::StackName}-container 
+          ContainerPort: 8000
+          TargetGroupArn: !Ref ElbTargetGroup
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: ENABLED # required to be ENABLED if subnet is public
+          Subnets:
+            - !Ref SubnetId1
+            - !Ref SubnetId2
+          SecurityGroups:
+            - !GetAtt ContainerSecurityGroup.GroupId
+      TaskDefinition: 
+        !Ref EcsTaskDefinition
+  
+  EcsTaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      NetworkMode: awsvpc
+      Cpu: '256'
+      Memory: '512'
+      RequiresCompatibilities: 
+        - FARGATE
+      ExecutionRoleArn: !Ref ecsTaskExecutionRole
+      ContainerDefinitions: 
+        - Name: simpledinein-app
+          Image: !Ref ImageTag
+          LogConfiguration: 
+            LogDriver: awslogs
+            Options:
+              awslogs-group: !Ref ContainerLogGroup
+              awslogs-region: !Ref AWS::Region
+              awslogs-stream-prefix: !Ref AWS::StackName
+          PortMappings: 
+            - ContainerPort: 8000
+          Environment:
+            - Name: 'DJANGO_SECRET_KEY'
+              Value: !Ref AppEnvSecret
+
+  # Setting up the application load balancer for EcsService.
+  LoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Name: !Sub ${AWS::StackName}-loadbalancer
+      Type: application
+      Scheme: internet-facing
+      SecurityGroups:
+        - !GetAtt LoadBalancerSecurityGroup.GroupId
+      Subnets: # referencing the public subnet, application load balancers need two subnets
+        - !Ref SubnetId1
+        - !Ref SubnetId2
+
+  ElbListener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties: 
+      Port: 80
+      Protocol: HTTP
+      DefaultActions:
+        - Type: forward
+          TargetGroupArn: !Ref ElbTargetGroup
+      LoadBalancerArn: !Ref LoadBalancer
+
+  ElbTargetGroup:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      HealthCheckEnabled: true
+      Name: !Sub ${AWS::StackName}-lb-tg
+      VpcId: !GetAtt SubnetId1.VpcId
+      TargetGroupAttributes:
+        - Key: deregistration_delay.timeout_seconds
+          Value: 30
+      Protocol: HTTP
+      TargetType: ip
+      Port: 8000
+
+  ContainerLogGroup: 
+    Type: AWS::Logs::LogGroup
+    Properties: 
+      LogGroupName: !Sub ${AWS::StackName}-logs
+      RetentionInDays: 3
+
+  # Creating security groups for ecs container and load balancer
+  ContainerSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: !Sub ${AWS::StackName}-container-sg
+      GroupDescription: !Sub "Security group for ${AWS::StackName} ecs container cloudformation stack"
+      VpcId: !GetAtt SubnetId1.VpcId
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 8000
+          ToPort: 8000
+          SourceSecurityGroupId: !GetAtt LoadBalancerSecurityGroup.GroupId
+  
+  LoadBalancerSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: !Sub ${AWS::StackName}-loadbalancer-sg
+      GroupDescription: !Sub "Security group for ${AWS::StackName} load balancer cloudformation stack"
+      VpcId: !GetAtt SubnetId1.VpcId
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+
+  ecsTaskExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - ecs-tasks.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy # AmazonECSTaskExecutionRolePolicy
+      # Policies:  # required if 'true' for awslogs-create-group under LogConfiguration/Options
+      #   - PolicyName: awslogs 
+      #     PolicyDocument:
+      #       Version: "2012-10-17"
+      #       Statement:
+      #         - Effect: Allow
+      #           Action:
+      #             - logs:CreateLogGroup 
+      #           Resource: "*"
+
+Outputs:
+  LoadBalancerDNS:
+    Description: The DNS name for the load balancer where we can use to visit the website
+    Value: !GetAtt LoadBalancer.DNSName

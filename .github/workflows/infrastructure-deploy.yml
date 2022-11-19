@@ -1,0 +1,54 @@
+name: Deploy CloudFormation infrastructure stack
+
+on:
+  workflow_dispatch
+  # push:
+  #   branches: [ "master" ]
+
+env:
+  AWS_REGION: ap-southeast-2             # set this to your preferred AWS region, e.g. us-west-1
+  ECR_REPOSITORY: simpledinein           # set this to your Amazon ECR repository name
+  CFN_STACKNAME: simpledinein-stack      # set this as your cloudformation stack name
+  CFN_TEMPLATE: .github/workflows/ecs-fargate-cluster.yml # set this to the path to your Amazon CFN template file
+
+
+permissions:
+  contents: read
+
+jobs:
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Query latest image on AWS ECR
+      id: query-image
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
+      run: |
+        export IMAGE_TAG=$(aws ecr describe-images --repository-name simpledinein \
+        --query 'sort_by(imageDetails,& imagePushedAt)[-1].imageTags[0]')
+        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+    
+    - name: Deploy to AWS CloudFormation
+      uses: aws-actions/aws-cloudformation-github-deploy@v1
+      with:
+        name: ${{ env.CFN_STACKNAME }}
+        template: ${{ env.CFN_TEMPLATE }}
+        parameter-overrides: "ImageTag=${{ steps.query-image.outputs.image }},AppEnvSecret=${{ secrets.DJANGO_SECRET_KEY }}"
