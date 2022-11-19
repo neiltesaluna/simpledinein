@@ -9,7 +9,7 @@ env:
   AWS_REGION: ap-southeast-2             # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: simpledinein           # set this to your Amazon ECR repository name
   CFN_STACKNAME: simpledinein-stack      # set this as your cloudformation stack name
-  CFN_TEMPLATE: .github/workflows/ecs-fargate-cluster.yml # set this to the path to your Amazon CFN template file
+  CFN_TEMPLATE: ecs-fargate-cluster.yml # set this to the path to your Amazon CFN template file
 
 
 permissions:
