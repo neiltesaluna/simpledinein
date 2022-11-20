@@ -51,4 +51,5 @@ jobs:
       with:
         name: ${{ env.CFN_STACKNAME }}
         template: ${{ env.CFN_TEMPLATE }}
+        capabilities: 'CAPABILITY_IAM'
         parameter-overrides: "ImageTag=${{ steps.query-image.outputs.image }},AppEnvSecret=${{ secrets.DJANGO_SECRET_KEY }}"
