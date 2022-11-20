@@ -46,7 +46,7 @@ Resources:
         MinimumHealthyPercent: 50
       LaunchType: FARGATE
       LoadBalancers:
-        - ContainerName: !Sub ${AWS::StackName}-container 
+        - ContainerName: simpledinein-app
           ContainerPort: 8000
           TargetGroupArn: !Ref ElbTargetGroup
       NetworkConfiguration:
