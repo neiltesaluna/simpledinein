@@ -53,6 +53,7 @@ jobs:
 
     - name: Deploy to AWS CloudFormation
       if: ${{ env.IMAGE_TAG == '' }}
+      id: build-ecr
       uses: aws-actions/aws-cloudformation-github-deploy@v1
       with:
         name: ${{ env.CFN_ECR_STACKNAME }}
@@ -61,7 +62,7 @@ jobs:
         parameter-overrides: "RepoName=${{ env.ECR_REPOSITORY }}"
 
     - name: Build, tag, and push image to Amazon ECR
-      if: ${{ env.IMAGE_TAG == '' }}
+      if: steps.build-ecr.outputs.triggered == 'true'
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
