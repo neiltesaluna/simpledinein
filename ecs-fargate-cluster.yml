@@ -41,6 +41,9 @@ Resources:
       Cluster: 
         !Ref EcsCluster
       DesiredCount: 1
+      DeploymentConfiguration:
+        MaximumPercent: 200
+        MinimumHealthyPercent: 50
       LaunchType: FARGATE
       LoadBalancers:
         - ContainerName: !Sub ${AWS::StackName}-container 
@@ -162,15 +165,6 @@ Resources:
               - 'sts:AssumeRole'
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy # AmazonECSTaskExecutionRolePolicy
-      # Policies:  # required if 'true' for awslogs-create-group under LogConfiguration/Options
-      #   - PolicyName: awslogs 
-      #     PolicyDocument:
-      #       Version: "2012-10-17"
-      #       Statement:
-      #         - Effect: Allow
-      #           Action:
-      #             - logs:CreateLogGroup 
-      #           Resource: "*"
 
 Outputs:
   LoadBalancerDNS:
