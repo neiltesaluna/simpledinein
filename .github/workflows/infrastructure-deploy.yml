@@ -8,17 +8,18 @@ on:
 env:
   AWS_REGION: ap-southeast-2             # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: simpledinein           # set this to your Amazon ECR repository name
-  CFN_STACKNAME: simpledinein-stack      # set this as your cloudformation stack name
-  CFN_TEMPLATE: ecs-fargate-cluster.yml # set this to the path to your Amazon CFN template file
+  CFN_ECR_STACKNAME: ecr-stack
+  CFN_ECR: ecr-build.yml
+  CFN_FARGATE_STACKNAME: simpledinein-stack  
+  CFN_FARGATE: ecs-fargate-cluster.yml 
 
 
 permissions:
   contents: read
 
 jobs:
-
-  deploy:
-    name: Deploy
+  build:
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -31,6 +32,14 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
+
+    - name: Deploy to AWS CloudFormation
+      uses: aws-actions/aws-cloudformation-github-deploy@v1
+      with:
+        name: ${{ env.CFN_ECR_STACKNAME }}
+        template: ${{ env.CFN_ECR }}
+        capabilities: 'CAPABILITY_IAM'
+        parameter-overrides: "RepoName=${{ env.ECR_REPOSITORY }}"
 
     - name: Login to Amazon ECR
       id: login-ecr
@@ -45,11 +54,39 @@ jobs:
         export IMAGE_TAG=$(aws ecr describe-images --repository-name simpledinein \
         --query 'sort_by(imageDetails,& imagePushedAt)[-1].imageTags[0]' | tr -d '"')
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+
+    - name: Build, tag, and push image to Amazon ECR
+      if: ${{ env.IMAGE_TAG == null }}
+      id: build-image
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
+        IMAGE_TAG: ${{ github.sha }}
+      run: |
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+    
+    outputs:
+      imagetag: steps.query-image.outputs.image
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
     
     - name: Deploy to AWS CloudFormation
       uses: aws-actions/aws-cloudformation-github-deploy@v1
       with:
-        name: ${{ env.CFN_STACKNAME }}
-        template: ${{ env.CFN_TEMPLATE }}
+        name: ${{ env.CFN_FARGATE_STACKNAME }}
+        template: ${{ env.CFN_FARGATE }}
         capabilities: 'CAPABILITY_IAM'
-        parameter-overrides: "ImageTag=${{ steps.query-image.outputs.image }},AppEnvSecret=${{ secrets.DJANGO_SECRET_KEY }}"
+        parameter-overrides: "ImageTag=${{ needs.build.outputs.imagetag }},AppEnvSecret=${{ secrets.DJANGO_SECRET_KEY }}"
