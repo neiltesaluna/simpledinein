@@ -69,6 +69,7 @@ Resources:
       RequiresCompatibilities: 
         - FARGATE
       ExecutionRoleArn: !Ref ecsTaskExecutionRole
+      Family: taskdefinition-simpledinein
       ContainerDefinitions: 
         - Name: simpledinein-app
           Image: !Ref ImageTag
