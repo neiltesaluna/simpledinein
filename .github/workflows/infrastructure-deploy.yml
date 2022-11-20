@@ -8,7 +8,7 @@ on:
 env:
   AWS_REGION: ap-southeast-2             # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: simpledinein           # set this to your Amazon ECR repository name
-  CFN_ECR_STACKNAME: ecr-stack
+  CFN_ECR_STACKNAME: ecr-build-stack
   CFN_ECR: ecr-build.yml
   CFN_FARGATE_STACKNAME: simpledinein-stack  
   CFN_FARGATE: ecs-fargate-cluster.yml 
