@@ -2,8 +2,8 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Description: "This stack generates the resources for an ECS fargate stack with a Network Load Balancer on a public network."
 Parameters:
-  ImageTag:
-    Description: Image tag required for the Fargate container, example 'latest'
+  Image:
+    Description: Image required for the Fargate container
     Type: String
 
   AppEnvSecret:
@@ -72,7 +72,7 @@ Resources:
       Family: taskdefinition-simpledinein
       ContainerDefinitions: 
         - Name: simpledinein-app
-          Image: !Ref ImageTag
+          Image: !Ref Image
           LogConfiguration: 
             LogDriver: awslogs
             Options:

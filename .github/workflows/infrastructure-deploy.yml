@@ -69,10 +69,10 @@ jobs:
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+        echo "::set-output name=imagetag::$IMAGE_TAG"
     
     outputs:
-      image: ${{ steps.build-image.outputs.image }}
+      imagetag: ${{ steps.build-image.outputs.imagetag }}
 
   deploy:
     name: Deploy
@@ -89,6 +89,19 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Create image path to be used for cloud formation
+      id: image-path
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}
+        IMAGE_TAG: ${{ needs.build.outputs.imagetag }}
+      run: |
+        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
     
     - name: Deploy to AWS CloudFormation
       uses: aws-actions/aws-cloudformation-github-deploy@v1
@@ -96,4 +109,4 @@ jobs:
         name: ${{ env.CFN_FARGATE_STACKNAME }}
         template: ${{ env.CFN_FARGATE }}
         capabilities: 'CAPABILITY_IAM'
-        parameter-overrides: "ImageTag=${{ needs.build.outputs.image }},AppEnvSecret=${{ secrets.DJANGO_SECRET_KEY }}"
+        parameter-overrides: "Image=${{ steps.image-path.outputs.image }},AppEnvSecret=${{ secrets.DJANGO_SECRET_KEY }}"
