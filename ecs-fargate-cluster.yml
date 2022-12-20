@@ -10,6 +10,34 @@ Parameters:
     Description: Secret key for the application
     Type: String
 
+  DjangoSuperEmail:
+    Description: Email for Django Super User
+    Type: String
+
+  DjangoSuperUsername:
+    Description: Username for Django Super User
+    Type: String
+
+  DjangoSuperPassword:
+    Description: Password for Django Super User
+    Type: String
+
+  DBName:
+    Description: Name of the database for the DB instance (MySQL)
+    Type: String
+
+  DBMasterUsername:
+    Description: Username for the DB instance
+    Type: String
+  
+  DBMasterPassword:
+    Description: User password for the DB instance
+    Type: String
+
+  DBEndPoint:
+    Description: Rds instance endpoint
+    Type: String
+
   SubnetId1:
     Description: Subnet 1 Id for the EcsService and Loadbalancer resource, we can either reference an existing aws subnet
     Type: AWS::EC2::Subnet::Id
@@ -84,6 +112,20 @@ Resources:
           Environment:
             - Name: 'DJANGO_SECRET_KEY'
               Value: !Ref AppEnvSecret
+            - Name: 'DJANGO_SUPERUSER_EMAIL'
+              Value: !Ref DjangoSuperEmail
+            - Name: 'DJANGO_SUPERUSER_USERNAME'
+              Value: !Ref DjangoSuperUsername
+            - Name: 'DJANGO_SUPERUSER_PASSWORD'
+              Value: !Ref DjangoSuperPassword
+            - Name: 'MYSQL_DATABASE'
+              Value: !Ref DBName
+            - Name: 'MYSQL_USER'
+              Value: !Ref DBMasterUsername
+            - Name: 'MYSQL_PASSWORD'
+              Value: !Ref DBMasterPassword
+            - Name: 'MYSQL_HOST'
+              Value: !Ref DBEndPoint
 
   # Setting up the application load balancer for EcsService.
   LoadBalancer:

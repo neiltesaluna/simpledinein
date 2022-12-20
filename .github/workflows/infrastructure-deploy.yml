@@ -109,4 +109,12 @@ jobs:
         name: ${{ env.CFN_FARGATE_STACKNAME }}
         template: ${{ env.CFN_FARGATE }}
         capabilities: 'CAPABILITY_IAM'
-        parameter-overrides: "Image=${{ steps.image-path.outputs.image }},AppEnvSecret=${{ secrets.DJANGO_SECRET_KEY }}"
+        parameter-overrides: "Image=${{ steps.image-path.outputs.image }},\
+        AppEnvSecret=${{ secrets.DJANGO_SECRET_KEY }},\
+        DjangoSuperEmail=${{ secrets.DJANGO_SUPERUSER_EMAIL }},\
+        DjangoSuperUsername=${{ secrets.DJANGO_SUPERUSER_USERNAME }},\
+        DjangoSuperPassword=${{ secrets.DJANGO_SUPERUSER_PASSWORD }},\
+        DBName=${{ secrets.MYSQL_DATABASE }},\
+        DBMasterUsername=${{ secrets.MYSQL_USER }},\
+        DBMasterPassword=${{ secrets.MYSQL_PASSWORD }},\
+        DBEndPoint=${{ secrets.MYSQL_HOST }}"
