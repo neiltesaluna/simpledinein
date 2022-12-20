@@ -2,3 +2,8 @@ DJANGO_SECRET_KEY='random_strig'
 DJANGO_SUPERUSER_EMAIL='test@gmail.com'
 DJANGO_SUPERUSER_USERNAME='testuser'
 DJANGO_SUPERUSER_PASSWORD='testpassword'
+MYSQL_DATABASE='dbname'
+MYSQL_USER='mysqluser'
+MYSQL_PASSWORD='mysqlpassword'
+# MYSQL_HOST is the name of the docker compose container
+MYSQL_HOST='sqldb'
