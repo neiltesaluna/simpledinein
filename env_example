@@ -1,0 +1,4 @@
+DJANGO_SECRET_KEY='random_strig'
+DJANGO_SUPERUSER_EMAIL='test@gmail.com'
+DJANGO_SUPERUSER_USERNAME='testuser'
+DJANGO_SUPERUSER_PASSWORD='testpassword'
