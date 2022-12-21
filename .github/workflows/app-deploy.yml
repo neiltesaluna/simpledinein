@@ -1,5 +1,5 @@
 # Workflow template from github actions.
-name: Deploy Application to Amazon ECS
+name: Update Application on Amazon ECS
 
 on:
   workflow_dispatch
