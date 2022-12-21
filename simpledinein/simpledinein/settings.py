@@ -27,9 +27,9 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-# Setting CSRF to website domain for form validation
+# Setting website domain to trusted origins for form validation
 
-CSRF_COOKIE_DOMAIN = 'simpledinein.tesaluna.com'
+CSRF_TRUSTED_ORIGINS = ['https://simpledinein.tesaluna.com']
 
 
 # Application definition
