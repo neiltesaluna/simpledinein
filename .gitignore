@@ -1,9 +1,12 @@
+# Adding more to ignore
 .DS_Store
+/simpledinein/static/
+docker-compose.override.*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-/simpledinein/static/
 # C extensions
 *.so
 
