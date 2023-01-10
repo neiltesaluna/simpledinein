@@ -25,3 +25,8 @@ services:
     - 8000:8000
     env_file:
       - .env
+    # Uncomment out lines below for local development
+    # volumes:
+    #   - ./simpledinein:/app
+    #   - ./setup.sh:/setup.sh
+    # command: /setup.sh
