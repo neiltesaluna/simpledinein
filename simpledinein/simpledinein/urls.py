@@ -20,5 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('recipe.urls')),
     path('api/', include('api.urls')),
-    path('', include('users.urls'))
+    path('', include('users.urls')),
+    path('',include('random_recipe.urls'))
 ]

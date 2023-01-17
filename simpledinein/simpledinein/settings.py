@@ -35,6 +35,7 @@ CSRF_TRUSTED_ORIGINS = ['https://simpledinein.tesaluna.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'random_recipe.apps.RandomRecipeConfig',
     'recipe.apps.RecipeConfig',
     'users.apps.UsersConfig',
     'django.contrib.admin',

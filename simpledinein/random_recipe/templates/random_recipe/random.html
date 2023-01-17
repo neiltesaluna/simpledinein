@@ -1,0 +1,44 @@
+{% extends "recipe/base.html" %}
+{% load markdown %}
+
+{% block content %}
+<section markdown="block">
+  <div class="standard_format m-4">
+    <h1><u>Random Drink</u></h1>
+    <h3>{{ drink_json.strDrink }}</h3>
+    <p>
+      <strong>Type:</strong> {{ drink_json.strAlcoholic }}
+      <br>
+      <strong>Category:</strong> {{ drink_json.strCategory }}
+      <br>
+      <strong>Container:</strong> {{ drink_json.strGlass }}     
+    </p>
+    <h3>Ingredients:</h3>
+    <ul>
+    {% for ingredient, measurement in drink_ingredients.items %}
+      <li>{{ measurement }} {{ ingredient }}</li>
+    {% endfor %}
+    </ul>
+    <h3>Directions:</h3>
+    <p>{{ drink_json.strInstructions }}</p>
+    <br>
+    <h1><u>Random Meal</u></h1>
+    <h3>{{ meal_json.strMeal }}</h3>
+    <p>
+      <strong>Type:</strong> {{ meal_json.strArea }}
+      <br>
+      <strong>Category:</strong> {{ meal_json.strCategory }}  
+    </p>
+    <h3>Ingredients:</h3>
+    <ul>
+    {% for ingredient, measurement in meal_ingredients.items %}
+      <li>{{ measurement }} {{ ingredient }}</li>
+    {% endfor %}
+    </ul>
+    <h3>Directions:</h3>
+    {% autoescape on %}
+      {{ meal_json.strInstructions | linebreaksbr }}
+    {% endautoescape %}
+  </div>
+</section>
+{% endblock content %}

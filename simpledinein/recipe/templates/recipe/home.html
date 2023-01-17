@@ -3,6 +3,11 @@
 
 {% block content %}
 <section markdown="block" class="recipe-list">
+  <div class="recipe-list-item container-fluid p-4 m-2">
+    <h1><a href="{% url 'random_recipe' %}">Feeling Adventurous?</a></h1>
+    <br>
+    Spin the Lazy Susan and try something new and exciting with a random drink and meal recipe!
+  </div>
   {% for recipe in recipes %}
     <div class="recipe-list-item container-fluid p-4 m-2">
       <h1><a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.title }}</a></h1>
